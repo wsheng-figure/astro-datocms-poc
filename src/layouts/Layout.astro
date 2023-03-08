@@ -15,8 +15,17 @@ const { title } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body>
-		<slot />
+		<body>
+		<header class="max-w-7xl mx-auto py-4 flex items-center justify-between">
+			<a class="text-gradient text-3xl italic font-black" href="/">Astro + DatoCMS POC</a>
+			<div>
+				<a class="inline-block text-center leading-10 w-40 h-10 rounded-full bg-fuchsia-800 text-white transition ease-in-out hover:-translate-y-0.5 hover:scale-105 hover:bg-indigo-500 duration-300 mr-6" href='/astro'>Remote MD</a>
+				<a class="inline-block text-center leading-10 w-40 h-10 rounded-full bg-blue-800 text-white transition ease-in-out hover:-translate-y-0.5 hover:scale-105 hover:bg-indigo-500 duration-300" href='/mdx'>Local MD</a>
+			</div>
+		</header>
+		<main class="max-w-7xl mx-auto">
+			<slot />
+		</main>
 	</body>
 </html>
 <style is:global>
@@ -28,8 +37,16 @@ const { title } = Astro.props;
 		font-family: system-ui, sans-serif;
 		background-color: #F6F6F6;
 	}
-	code {
-		font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-			Bitstream Vera Sans Mono, Courier New, monospace;
+	h1 {
+		font-size: 3rem;
+		font-weight: 700;
+		margin: 0;
+	}
+	.text-gradient {
+		background-image: var(--accent-gradient);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-size: 400%;
+		background-position: 0%;
 	}
 </style>
