@@ -1,0 +1,17 @@
+---
+
+const { icon } = Astro.props
+---
+
+<div>
+  <img src={`/${icon}.svg`} alt={icon}>
+  <slot />
+</div>
+
+
+<style>
+  /* This does not work */
+  h2 {
+    font-size: 3rem;
+  }
+</style>
