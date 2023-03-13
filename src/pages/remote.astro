@@ -17,7 +17,6 @@ import Layout from '../layouts/Layout.astro';
 import Section from '../layouts/Section.astro';
 import Blurb from '../components/Blurb.tsx';
 import Button from '../components/Button.tsx';
-import AstroButton from '../components/AstroButton.astro';
 import SellingPoint from '../components/SellingPoint.astro';
 
 const DATO_API_TOKEN = 'bb82b0f655a934b55179f8bc60a4b7';
@@ -60,7 +59,7 @@ const response = await fetch(
 ).then((res) => res.json())
 
 const res = await response.data.datoPage.content;
-// console.log("res: ", res)
+console.log("res: ", res)
 
 ---
 
@@ -69,19 +68,19 @@ const res = await response.data.datoPage.content;
 		Button,
 		Blurb
 	}}> -->
-		<Section>
+		<Section className="md:grid-cols-2 md:gap-x-20">
 			<!-- { res } -->
 			<div>
-				<Markdown content={res[1].content} components={{ AstroButton, Button }} />
+				<Markdown content={res[1].content} components={{ Button, Blurb }} />
 			</div>
 			<picture>
 				<img src={`/${res[1].assets[0].basename}.png`} alt={res[1].assets[0].alt} />
 			</picture>
 		</Section>
 	<!-- </MDXProvider> -->
-	<section class="mt-20 grid grid-cols-4 gap-x-8">
+	<Section className="md:grid-cols-4 gap-8">
 		<Markdown content={res[2].content} components={{ SellingPoint }} />
-	</section>
+	</Section>
 </Layout>
 
 <!-- Styles within a component is scoped to the component, it is similar to styled components  -->
